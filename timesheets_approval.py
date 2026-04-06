@@ -24,6 +24,7 @@ pending_df = session.sql("""
     SELECT
         TIMESHEET_ID,
         EMPLOYEE_EMAIL,
+        DAYNAME(ENTRY_DATE) AS DAY,
         ENTRY_DATE,
         PROJECT_NAME,
         HOURS_WORKED,
@@ -50,6 +51,7 @@ edited = st.data_editor(
     column_config={
         "TIMESHEET_ID": st.column_config.NumberColumn("ID", disabled=True),
         "EMPLOYEE_EMAIL": st.column_config.TextColumn("Employee", disabled=True),
+        "DAY": st.column_config.TextColumn("Day", disabled=True),
         "ENTRY_DATE": st.column_config.DateColumn("Date", disabled=True),
         "PROJECT_NAME": st.column_config.TextColumn("Project", disabled=True),
         "HOURS_WORKED": st.column_config.NumberColumn("Hours", disabled=True),
